@@ -1,0 +1,1132 @@
+{
+  "meta": {
+    "synthetic": false,
+    "dataset_name": "NSL-KDD",
+    "dataset_source": "https://github.com/defcom17/NSL_KDD raw KDDTrain+.txt and KDDTest+.txt files",
+    "random_state": 42,
+    "training_test_note": "The official KDDTrain+ file was used for fitting; the official KDDTest+ file was held out for evaluation. All preprocessing was fit on KDDTrain+ only.",
+    "environment": {
+      "os": "Linux-6.8.0-1070-azure-x86_64-with-glibc2.39",
+      "cpu": "x86_64",
+      "cpu_cores": 2,
+      "ram_gib": 7.76,
+      "python": "3.14.2",
+      "libraries": {
+        "numpy": "2.5.5",
+        "pandas": "3.1.1",
+        "scikit-learn": "1.9.1",
+        "matplotlib": "3.11.2",
+        "joblib": "1.6.0"
+      },
+      "scikit_learn": "1.9.1"
+    }
+  },
+  "dataset": {
+    "train_rows": 125973,
+    "test_rows": 22544,
+    "feature_count": 41,
+    "raw_feature_columns": 42,
+    "target_classes": [
+      "Benign",
+      "DOS",
+      "PROBE",
+      "R2L",
+      "U2R"
+    ],
+    "class_distribution": {
+      "train": {
+        "Benign": 67343,
+        "DOS": 45927,
+        "PROBE": 11656,
+        "R2L": 995,
+        "U2R": 52
+      },
+      "test": {
+        "Benign": 9711,
+        "DOS": 7460,
+        "PROBE": 2421,
+        "R2L": 2752,
+        "U2R": 200
+      }
+    },
+    "feature_groups": [
+      {
+        "group": "Basic connection features",
+        "count": 9,
+        "features": [
+          "duration",
+          "protocol_type",
+          "service",
+          "flag",
+          "src_bytes",
+          "dst_bytes",
+          "land",
+          "wrong_fragment",
+          "urgent"
+        ]
+      },
+      {
+        "group": "Content features",
+        "count": 13,
+        "features": [
+          "hot",
+          "num_failed_logins",
+          "logged_in",
+          "num_compromised",
+          "root_shell",
+          "su_attempted",
+          "num_root",
+          "num_file_creations",
+          "num_shells",
+          "num_access_files",
+          "num_outbound_cmds",
+          "is_host_login",
+          "is_guest_login"
+        ]
+      },
+      {
+        "group": "Time-based traffic features",
+        "count": 9,
+        "features": [
+          "count",
+          "srv_count",
+          "serror_rate",
+          "srv_serror_rate",
+          "rerror_rate",
+          "srv_rerror_rate",
+          "same_srv_rate",
+          "diff_srv_rate",
+          "srv_diff_host_rate"
+        ]
+      },
+      {
+        "group": "Host-based traffic features",
+        "count": 10,
+        "features": [
+          "dst_host_count",
+          "dst_host_srv_count",
+          "dst_host_same_srv_rate",
+          "dst_host_diff_srv_rate",
+          "dst_host_same_src_port_rate",
+          "dst_host_srv_diff_host_rate",
+          "dst_host_serror_rate",
+          "dst_host_srv_serror_rate",
+          "dst_host_rerror_rate",
+          "dst_host_srv_rerror_rate"
+        ]
+      }
+    ],
+    "attack_categories": {
+      "Benign": [
+        "normal"
+      ],
+      "DOS": [
+        "apache2",
+        "back",
+        "land",
+        "mailbomb",
+        "neptune",
+        "pod",
+        "processtable",
+        "smurf",
+        "teardrop",
+        "udpstorm",
+        "worm"
+      ],
+      "PROBE": [
+        "ipsweep",
+        "mscan",
+        "nmap",
+        "portsweep",
+        "saint",
+        "satan"
+      ],
+      "R2L": [
+        "ftp_write",
+        "guess_passwd",
+        "imap",
+        "multihop",
+        "named",
+        "phf",
+        "sendmail",
+        "snmpgetattack",
+        "snmpguess",
+        "spy",
+        "warezclient",
+        "warezmaster",
+        "xlock",
+        "xsnoop"
+      ],
+      "U2R": [
+        "buffer_overflow",
+        "httptunnel",
+        "loadmodule",
+        "perl",
+        "ps",
+        "rootkit",
+        "sqlattack",
+        "xterm"
+      ]
+    },
+    "difficulty_field_excluded": true
+  },
+  "settings": {
+    "Logistic Regression": {
+      "max_iter": 500,
+      "class_weight": "balanced"
+    },
+    "Decision Tree": {
+      "max_depth": 20,
+      "min_samples_leaf": 2,
+      "class_weight": "balanced"
+    },
+    "Random Forest": {
+      "n_estimators": 80,
+      "max_depth": 20,
+      "class_weight": "balanced_subsample",
+      "n_jobs": 2
+    },
+    "Linear SVM": {
+      "C": 0.1,
+      "class_weight": "balanced",
+      "max_iter": 5000
+    },
+    "K-Nearest Neighbors": {
+      "n_neighbors": 5,
+      "weights": "distance",
+      "n_jobs": 2,
+      "training_row_limit": 10000
+    },
+    "Gaussian Naive Bayes": {
+      "var_smoothing": 1e-09
+    },
+    "Histogram Gradient Boosting": {
+      "max_iter": 100,
+      "max_leaf_nodes": 31,
+      "learning_rate": 0.1,
+      "class_weight": "balanced"
+    }
+  },
+  "model_training_rows": {
+    "binary:Logistic Regression": 125973,
+    "five_class:Logistic Regression": 125973,
+    "binary:Decision Tree": 125973,
+    "five_class:Decision Tree": 125973,
+    "binary:Random Forest": 125973,
+    "five_class:Random Forest": 125973,
+    "binary:Linear SVM": 125973,
+    "five_class:Linear SVM": 125973,
+    "binary:K-Nearest Neighbors": 10000,
+    "five_class:K-Nearest Neighbors": 10000,
+    "binary:Gaussian Naive Bayes": 125973,
+    "five_class:Gaussian Naive Bayes": 125973,
+    "binary:Histogram Gradient Boosting": 125973,
+    "five_class:Histogram Gradient Boosting": 125973
+  },
+  "experiment_a": {
+    "target": "Benign versus Attack",
+    "positive_class": "Attack",
+    "comparison": {
+      "Logistic Regression": {
+        "metrics": {
+          "accuracy": 0.7547906316536551,
+          "precision": 0.9169996574951479,
+          "recall": 0.6258863866593938,
+          "f1": 0.7439792515746573,
+          "auc": 0.7897629235229304,
+          "far": 0.07486355679126763,
+          "false_alarms": 727,
+          "true_negatives": 8984
+        },
+        "training_seconds": 6.755652017000102,
+        "confusion_matrix": [
+          [
+            8984,
+            727
+          ],
+          [
+            4801,
+            8032
+          ]
+        ]
+      },
+      "Decision Tree": {
+        "metrics": {
+          "accuracy": 0.8377395315826828,
+          "precision": 0.9519259186287066,
+          "recall": 0.7529805968986207,
+          "f1": 0.8408458057779324,
+          "auc": 0.8561165119952283,
+          "far": 0.05025229121614664,
+          "false_alarms": 488,
+          "true_negatives": 9223
+        },
+        "training_seconds": 2.1674896119998266,
+        "confusion_matrix": [
+          [
+            9223,
+            488
+          ],
+          [
+            3170,
+            9663
+          ]
+        ]
+      },
+      "Random Forest": {
+        "metrics": {
+          "accuracy": 0.7800301632363378,
+          "precision": 0.9685789097833849,
+          "recall": 0.6341463414634146,
+          "f1": 0.7664704497292206,
+          "auc": 0.9610147186519846,
+          "far": 0.027185665739882608,
+          "false_alarms": 264,
+          "true_negatives": 9447
+        },
+        "training_seconds": 5.588429886000085,
+        "confusion_matrix": [
+          [
+            9447,
+            264
+          ],
+          [
+            4695,
+            8138
+          ]
+        ]
+      },
+      "Linear SVM": {
+        "metrics": {
+          "accuracy": 0.7499556422995032,
+          "precision": 0.9149942329873125,
+          "recall": 0.618171900568846,
+          "f1": 0.7378505324838395,
+          "auc": 0.7947888154527851,
+          "far": 0.07589331685717228,
+          "false_alarms": 737,
+          "true_negatives": 8974
+        },
+        "training_seconds": 2.5234927310002604,
+        "confusion_matrix": [
+          [
+            8974,
+            737
+          ],
+          [
+            4900,
+            7933
+          ]
+        ]
+      },
+      "K-Nearest Neighbors": {
+        "metrics": {
+          "accuracy": 0.7737313697657914,
+          "precision": 0.9656709226692364,
+          "recall": 0.6247175251305229,
+          "f1": 0.7586467944168441,
+          "auc": 0.8353461359158268,
+          "far": 0.02934816187828236,
+          "false_alarms": 285,
+          "true_negatives": 9426
+        },
+        "training_seconds": 0.019282182000097237,
+        "confusion_matrix": [
+          [
+            9426,
+            285
+          ],
+          [
+            4816,
+            8017
+          ]
+        ]
+      },
+      "Gaussian Naive Bayes": {
+        "metrics": {
+          "accuracy": 0.5664034776437189,
+          "precision": 0.9781113195747342,
+          "recall": 0.2437465908205408,
+          "f1": 0.3902439024390244,
+          "auc": 0.7992085267182695,
+          "far": 0.007208320461332509,
+          "false_alarms": 70,
+          "true_negatives": 9641
+        },
+        "training_seconds": 0.3728670420000526,
+        "confusion_matrix": [
+          [
+            9641,
+            70
+          ],
+          [
+            9705,
+            3128
+          ]
+        ]
+      },
+      "Histogram Gradient Boosting": {
+        "metrics": {
+          "accuracy": 0.8050035486160397,
+          "precision": 0.9697138403295846,
+          "recall": 0.6786410036624327,
+          "f1": 0.7984780416246448,
+          "auc": 0.9566569149600097,
+          "far": 0.028009473792606324,
+          "false_alarms": 272,
+          "true_negatives": 9439
+        },
+        "training_seconds": 15.239132460999826,
+        "confusion_matrix": [
+          [
+            9439,
+            272
+          ],
+          [
+            4124,
+            8709
+          ]
+        ]
+      }
+    },
+    "best_model": "Decision Tree",
+    "best_metrics": {
+      "accuracy": 0.8377395315826828,
+      "precision": 0.9519259186287066,
+      "recall": 0.7529805968986207,
+      "f1": 0.8408458057779324,
+      "auc": 0.8561165119952283,
+      "far": 0.05025229121614664,
+      "false_alarms": 488,
+      "true_negatives": 9223
+    }
+  },
+  "experiment_b": {
+    "target": "Benign, DOS, PROBE, R2L, and U2R",
+    "class_names": [
+      "Benign",
+      "DOS",
+      "PROBE",
+      "R2L",
+      "U2R"
+    ],
+    "comparison": {
+      "Logistic Regression": {
+        "metrics": {
+          "accuracy": 0.7881919801277502,
+          "precision_macro": 0.6738761840782833,
+          "recall_macro": 0.5975775330165806,
+          "f1_macro": 0.5951833396388411,
+          "f1_weighted": 0.7725437492158354,
+          "per_class": {
+            "Benign": {
+              "precision": 0.732480396203054,
+              "recall": 0.9138090824837812,
+              "f1": 0.8131586181618253,
+              "support": 9711
+            },
+            "DOS": {
+              "precision": 0.9215947828664591,
+              "recall": 0.8335120643431635,
+              "f1": 0.8753431407052861,
+              "support": 7460
+            },
+            "PROBE": {
+              "precision": 0.8202746365105008,
+              "recall": 0.838909541511772,
+              "f1": 0.829487441290586,
+              "support": 2421
+            },
+            "R2L": {
+              "precision": 0.8165997322623829,
+              "recall": 0.22165697674418605,
+              "f1": 0.348671048871106,
+              "support": 2752
+            },
+            "U2R": {
+              "precision": 0.0784313725490196,
+              "recall": 0.18,
+              "f1": 0.10925644916540213,
+              "support": 200
+            }
+          },
+          "auc_ovr_macro": 0.8712926217830421
+        },
+        "training_seconds": 56.85239953199971,
+        "confusion_matrix": [
+          [
+            8874,
+            412,
+            355,
+            34,
+            36
+          ],
+          [
+            1168,
+            6218,
+            72,
+            0,
+            2
+          ],
+          [
+            196,
+            114,
+            2031,
+            75,
+            5
+          ],
+          [
+            1741,
+            3,
+            18,
+            610,
+            380
+          ],
+          [
+            136,
+            0,
+            0,
+            28,
+            36
+          ]
+        ]
+      },
+      "Decision Tree": {
+        "metrics": {
+          "accuracy": 0.7312366926898509,
+          "precision_macro": 0.6700578205761902,
+          "recall_macro": 0.4972866377932574,
+          "f1_macro": 0.4863241562642459,
+          "f1_weighted": 0.6944620401888605,
+          "per_class": {
+            "Benign": {
+              "precision": 0.6745504004836028,
+              "recall": 0.9192668108330759,
+              "f1": 0.7781215951187622,
+              "support": 9711
+            },
+            "DOS": {
+              "precision": 0.9620083682008368,
+              "recall": 0.7705093833780161,
+              "f1": 0.855675474506885,
+              "support": 7460
+            },
+            "PROBE": {
+              "precision": 0.540270618556701,
+              "recall": 0.6926889714993805,
+              "f1": 0.6070588235294118,
+              "support": 2421
+            },
+            "R2L": {
+              "precision": 0.5734597156398105,
+              "recall": 0.043968023255813955,
+              "f1": 0.08167397907526155,
+              "support": 2752
+            },
+            "U2R": {
+              "precision": 0.6,
+              "recall": 0.06,
+              "f1": 0.10909090909090909,
+              "support": 200
+            }
+          },
+          "auc_ovr_macro": 0.7109622396641402
+        },
+        "training_seconds": 1.5921969180003543,
+        "confusion_matrix": [
+          [
+            8927,
+            74,
+            703,
+            4,
+            3
+          ],
+          [
+            1102,
+            5748,
+            610,
+            0,
+            0
+          ],
+          [
+            517,
+            153,
+            1677,
+            74,
+            0
+          ],
+          [
+            2621,
+            0,
+            5,
+            121,
+            5
+          ],
+          [
+            67,
+            0,
+            109,
+            12,
+            12
+          ]
+        ]
+      },
+      "Random Forest": {
+        "metrics": {
+          "accuracy": 0.7361603974449965,
+          "precision_macro": 0.7335772159397711,
+          "recall_macro": 0.4678449800677621,
+          "f1_macro": 0.46758317911916547,
+          "f1_weighted": 0.6886660881741979,
+          "per_class": {
+            "Benign": {
+              "precision": 0.633883078573344,
+              "recall": 0.9736381423128411,
+              "f1": 0.7678564177528728,
+              "support": 9711
+            },
+            "DOS": {
+              "precision": 0.9608306601384433,
+              "recall": 0.7628686327077748,
+              "f1": 0.8504819547186729,
+              "support": 7460
+            },
+            "PROBE": {
+              "precision": 0.8509501187648456,
+              "recall": 0.5919041718298224,
+              "f1": 0.6981729598051157,
+              "support": 2421
+            },
+            "R2L": {
+              "precision": 0.8888888888888888,
+              "recall": 0.005813953488372093,
+              "f1": 0.011552346570397111,
+              "support": 2752
+            },
+            "U2R": {
+              "precision": 0.3333333333333333,
+              "recall": 0.005,
+              "f1": 0.009852216748768473,
+              "support": 200
+            }
+          },
+          "auc_ovr_macro": 0.8849271124628613
+        },
+        "training_seconds": 5.692291787000158,
+        "confusion_matrix": [
+          [
+            9455,
+            67,
+            188,
+            0,
+            1
+          ],
+          [
+            1711,
+            5691,
+            58,
+            0,
+            0
+          ],
+          [
+            823,
+            165,
+            1433,
+            0,
+            0
+          ],
+          [
+            2733,
+            0,
+            2,
+            16,
+            1
+          ],
+          [
+            194,
+            0,
+            3,
+            2,
+            1
+          ]
+        ]
+      },
+      "Linear SVM": {
+        "metrics": {
+          "accuracy": 0.7500887154009936,
+          "precision_macro": 0.6313563964377078,
+          "recall_macro": 0.5299000616257754,
+          "f1_macro": 0.5309728510959486,
+          "f1_weighted": 0.7233529238072604,
+          "per_class": {
+            "Benign": {
+              "precision": 0.6851073584473141,
+              "recall": 0.923282875090104,
+              "f1": 0.7865602245811036,
+              "support": 9711
+            },
+            "DOS": {
+              "precision": 0.9146136189747514,
+              "recall": 0.8012064343163539,
+              "f1": 0.854162200785995,
+              "support": 7460
+            },
+            "PROBE": {
+              "precision": 0.7636792452830189,
+              "recall": 0.6687319289549772,
+              "f1": 0.7130587976216692,
+              "support": 2421
+            },
+            "R2L": {
+              "precision": 0.7142857142857143,
+              "recall": 0.11627906976744186,
+              "f1": 0.2,
+              "support": 2752
+            },
+            "U2R": {
+              "precision": 0.07909604519774012,
+              "recall": 0.14,
+              "f1": 0.10108303249097472,
+              "support": 200
+            }
+          },
+          "auc_ovr_macro": 0.8245377763974382
+        },
+        "training_seconds": 87.77501651000011,
+        "confusion_matrix": [
+          [
+            8966,
+            420,
+            302,
+            12,
+            11
+          ],
+          [
+            1300,
+            5977,
+            183,
+            0,
+            0
+          ],
+          [
+            566,
+            136,
+            1619,
+            100,
+            0
+          ],
+          [
+            2102,
+            1,
+            14,
+            320,
+            315
+          ],
+          [
+            153,
+            1,
+            2,
+            16,
+            28
+          ]
+        ]
+      },
+      "K-Nearest Neighbors": {
+        "metrics": {
+          "accuracy": 0.7555003548616039,
+          "precision_macro": 0.6810836247444285,
+          "recall_macro": 0.49449903073676066,
+          "f1_macro": 0.48247206714025337,
+          "f1_weighted": 0.7077201616445268,
+          "per_class": {
+            "Benign": {
+              "precision": 0.6618452464541497,
+              "recall": 0.9706518381217176,
+              "f1": 0.787041289191333,
+              "support": 9711
+            },
+            "DOS": {
+              "precision": 0.9657950994902155,
+              "recall": 0.7872654155495978,
+              "f1": 0.8674396277970607,
+              "support": 7460
+            },
+            "PROBE": {
+              "precision": 0.7777777777777778,
+              "recall": 0.7054935976869062,
+              "f1": 0.7398743773012779,
+              "support": 2421
+            },
+            "R2L": {
+              "precision": 1.0,
+              "recall": 0.009084302325581396,
+              "f1": 0.018005041411595247,
+              "support": 2752
+            },
+            "U2R": {
+              "precision": 0.0,
+              "recall": 0.0,
+              "f1": 0.0,
+              "support": 200
+            }
+          },
+          "auc_ovr_macro": 0.7392980828295148
+        },
+        "training_seconds": 0.017716281000048184,
+        "confusion_matrix": [
+          [
+            9426,
+            61,
+            224,
+            0,
+            0
+          ],
+          [
+            1470,
+            5873,
+            117,
+            0,
+            0
+          ],
+          [
+            567,
+            146,
+            1708,
+            0,
+            0
+          ],
+          [
+            2692,
+            1,
+            34,
+            25,
+            0
+          ],
+          [
+            87,
+            0,
+            113,
+            0,
+            0
+          ]
+        ]
+      },
+      "Gaussian Naive Bayes": {
+        "metrics": {
+          "accuracy": 0.4736958836053939,
+          "precision_macro": 0.5100466208654952,
+          "recall_macro": 0.36795818627852467,
+          "f1_macro": 0.3351624185191696,
+          "f1_weighted": 0.49226166703049606,
+          "per_class": {
+            "Benign": {
+              "precision": 0.5177771925204109,
+              "recall": 0.6073524868705592,
+              "f1": 0.5589991470002843,
+              "support": 9711
+            },
+            "DOS": {
+              "precision": 0.889641334336594,
+              "recall": 0.47546916890080426,
+              "f1": 0.6197256923211322,
+              "support": 7460
+            },
+            "PROBE": {
+              "precision": 0.9224806201550387,
+              "recall": 0.09830648492358529,
+              "f1": 0.1776782381485629,
+              "support": 2421
+            },
+            "R2L": {
+              "precision": 0.15885461053349242,
+              "recall": 0.3386627906976744,
+              "f1": 0.21626638821208957,
+              "support": 2752
+            },
+            "U2R": {
+              "precision": 0.06147934678194044,
+              "recall": 0.32,
+              "f1": 0.1031426269137792,
+              "support": 200
+            }
+          },
+          "auc_ovr_macro": 0.7004677404366495
+        },
+        "training_seconds": 0.40099415999975463,
+        "confusion_matrix": [
+          [
+            5898,
+            88,
+            10,
+            3424,
+            291
+          ],
+          [
+            2728,
+            3547,
+            4,
+            1155,
+            26
+          ],
+          [
+            1366,
+            349,
+            238,
+            334,
+            134
+          ],
+          [
+            1285,
+            3,
+            6,
+            932,
+            526
+          ],
+          [
+            114,
+            0,
+            0,
+            22,
+            64
+          ]
+        ]
+      },
+      "Histogram Gradient Boosting": {
+        "metrics": {
+          "accuracy": 0.789833215046132,
+          "precision_macro": 0.8077404579569789,
+          "recall_macro": 0.5718239602502543,
+          "f1_macro": 0.6103386337150415,
+          "f1_weighted": 0.7709937577215745,
+          "per_class": {
+            "Benign": {
+              "precision": 0.6990291262135923,
+              "recall": 0.9712696941612604,
+              "f1": 0.8129632821927254,
+              "support": 9711
+            },
+            "DOS": {
+              "precision": 0.9627815866797258,
+              "recall": 0.7906166219839142,
+              "f1": 0.8682467245694097,
+              "support": 7460
+            },
+            "PROBE": {
+              "precision": 0.8093240093240093,
+              "recall": 0.7170590665014457,
+              "f1": 0.7604029785370127,
+              "support": 2421
+            },
+            "R2L": {
+              "precision": 0.9675675675675676,
+              "recall": 0.2601744186046512,
+              "f1": 0.41008018327605955,
+              "support": 2752
+            },
+            "U2R": {
+              "precision": 0.6,
+              "recall": 0.12,
+              "f1": 0.2,
+              "support": 200
+            }
+          },
+          "auc_ovr_macro": 0.9235452889701297
+        },
+        "training_seconds": 17.85856983099984,
+        "confusion_matrix": [
+          [
+            9432,
+            57,
+            212,
+            4,
+            6
+          ],
+          [
+            1378,
+            5898,
+            182,
+            2,
+            0
+          ],
+          [
+            498,
+            171,
+            1736,
+            15,
+            1
+          ],
+          [
+            2018,
+            0,
+            9,
+            716,
+            9
+          ],
+          [
+            167,
+            0,
+            6,
+            3,
+            24
+          ]
+        ]
+      }
+    },
+    "best_model": "Histogram Gradient Boosting",
+    "best_metrics": {
+      "accuracy": 0.789833215046132,
+      "precision_macro": 0.8077404579569789,
+      "recall_macro": 0.5718239602502543,
+      "f1_macro": 0.6103386337150415,
+      "f1_weighted": 0.7709937577215745,
+      "per_class": {
+        "Benign": {
+          "precision": 0.6990291262135923,
+          "recall": 0.9712696941612604,
+          "f1": 0.8129632821927254,
+          "support": 9711
+        },
+        "DOS": {
+          "precision": 0.9627815866797258,
+          "recall": 0.7906166219839142,
+          "f1": 0.8682467245694097,
+          "support": 7460
+        },
+        "PROBE": {
+          "precision": 0.8093240093240093,
+          "recall": 0.7170590665014457,
+          "f1": 0.7604029785370127,
+          "support": 2421
+        },
+        "R2L": {
+          "precision": 0.9675675675675676,
+          "recall": 0.2601744186046512,
+          "f1": 0.41008018327605955,
+          "support": 2752
+        },
+        "U2R": {
+          "precision": 0.6,
+          "recall": 0.12,
+          "f1": 0.2,
+          "support": 200
+        }
+      },
+      "auc_ovr_macro": 0.9235452889701297
+    },
+    "top_features": [
+      {
+        "feature": "dst_bytes",
+        "importance": 0.08536037088160564
+      },
+      {
+        "feature": "dst_host_diff_srv_rate",
+        "importance": 0.07303975103484028
+      },
+      {
+        "feature": "service_http",
+        "importance": 0.04984480429495103
+      },
+      {
+        "feature": "service_other",
+        "importance": 0.0490076442948314
+      },
+      {
+        "feature": "is_guest_login",
+        "importance": 0.04635960900367697
+      },
+      {
+        "feature": "duration",
+        "importance": 0.03931291350159294
+      },
+      {
+        "feature": "dst_host_same_src_port_rate",
+        "importance": 0.03878625857014362
+      },
+      {
+        "feature": "dst_host_serror_rate",
+        "importance": 0.030216163927461015
+      },
+      {
+        "feature": "dst_host_srv_count",
+        "importance": 0.024640583972620977
+      },
+      {
+        "feature": "count",
+        "importance": 0.02275212800997234
+      },
+      {
+        "feature": "service_ftp_data",
+        "importance": 0.015125374928992297
+      },
+      {
+        "feature": "diff_srv_rate",
+        "importance": 0.014700661593573638
+      },
+      {
+        "feature": "src_bytes",
+        "importance": 0.014387699459934622
+      },
+      {
+        "feature": "service_private",
+        "importance": 0.013563026753968699
+      },
+      {
+        "feature": "protocol_type_udp",
+        "importance": 0.012657627658937798
+      }
+    ]
+  },
+  "test_cases": [
+    {
+      "id": "TC-01",
+      "test": "Official training data loaded",
+      "status": "PASS",
+      "observed": "125973 labeled training rows"
+    },
+    {
+      "id": "TC-02",
+      "test": "Official test data loaded",
+      "status": "PASS",
+      "observed": "22544 labeled test rows"
+    },
+    {
+      "id": "TC-03",
+      "test": "Training and test feature schemas match",
+      "status": "PASS",
+      "observed": "41 matching predictor columns"
+    },
+    {
+      "id": "TC-04",
+      "test": "NSL-KDD labels normalize to five categories",
+      "status": "PASS",
+      "observed": "Observed training labels: ['Benign', 'DOS', 'PROBE', 'R2L', 'U2R']"
+    },
+    {
+      "id": "TC-05",
+      "test": "Test categories were represented during training",
+      "status": "PASS",
+      "observed": "Observed test labels: ['Benign', 'DOS', 'PROBE', 'R2L', 'U2R']"
+    },
+    {
+      "id": "TC-06",
+      "test": "Train-fitted preprocessing yields finite, aligned matrices",
+      "status": "PASS",
+      "observed": "Transformed shapes: (125973, 122) and (22544, 122)"
+    },
+    {
+      "id": "TC-07",
+      "test": "Numeric preprocessing was fit on the training partition",
+      "status": "PASS",
+      "observed": "Fitted input schema has 41 columns"
+    }
+  ],
+  "figure_files": [
+    "figures/fig_workflow.png",
+    "figures/fig_class_distribution.png",
+    "figures/fig_binary_comparison.png",
+    "figures/fig_binary_confusion_matrices.png",
+    "figures/fig_binary_roc.png",
+    "figures/fig_five_class_confusion_matrix.png",
+    "figures/fig_feature_importance.png"
+  ]
+}

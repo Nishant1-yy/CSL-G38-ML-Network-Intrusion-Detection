@@ -1,0 +1,24 @@
+binary | Logistic Regression: trained on 125973 rows in 6.76s
+/workspaces/CSL-G38-ML-Network-Intrusion-Detection/venv/lib/python3.14/site-packages/sklearn/linear_model/_logistic.py:599: ConvergenceWarning: lbfgs failed to converge after 500 iteration(s) (status=1):
+STOP: TOTAL NO. OF ITERATIONS REACHED LIMIT
+
+Increase the number of iterations to improve the convergence (max_iter=500).
+You might also want to scale the data as shown in:
+    https://scikit-learn.org/stable/modules/preprocessing.html
+Please also refer to the documentation for alternative solver options:
+    https://scikit-learn.org/stable/modules/linear_model.html#logistic-regression
+  n_iter_i = _check_optimize_result(
+five_class | Logistic Regression: trained on 125973 rows in 56.85s
+binary | Decision Tree: trained on 125973 rows in 2.17s
+five_class | Decision Tree: trained on 125973 rows in 1.59s
+binary | Random Forest: trained on 125973 rows in 5.59s
+five_class | Random Forest: trained on 125973 rows in 5.69s
+binary | Linear SVM: trained on 125973 rows in 2.52s
+five_class | Linear SVM: trained on 125973 rows in 87.78s
+binary | K-Nearest Neighbors: trained on 10000 rows in 0.02s
+five_class | K-Nearest Neighbors: trained on 10000 rows in 0.02s
+binary | Gaussian Naive Bayes: trained on 125973 rows in 0.37s
+five_class | Gaussian Naive Bayes: trained on 125973 rows in 0.40s
+binary | Histogram Gradient Boosting: trained on 125973 rows in 15.24s
+five_class | Histogram Gradient Boosting: trained on 125973 rows in 17.86s
+Completed: train_rows=125973, test_rows=22544, best_binary=Decision Tree, best_five_class=Histogram Gradient Boosting
